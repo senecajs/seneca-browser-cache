@@ -1,7 +1,7 @@
 /* Copyright (c) 2026 Richard Rodger, MIT License. */
 
 /*
- * @voxgig/seneca-browser-store
+ * @seneca/browser-cache
  *
  * A Redux-like state cache for Seneca running in the browser. It sits
  * transparently in front of the remote (backend) message pins and caches
@@ -9,7 +9,7 @@
  * instead of hitting the server again.
  *
  * Interception uses the ordu inward/outward pipeline (the same mechanism
- * seneca-browser uses for `debounce`), which works over a transport client
+ * @seneca/browser uses for `debounce`), which works over a transport client
  * pin where `seneca.wrap` cannot. On a read miss the value is cached; a write
  * updates the cache OPTIMISTICALLY (mutating the cached list(s) in place
  * before the server replies) and reconciles with the authoritative result -
@@ -34,7 +34,7 @@
  *   seneca.use(SenecaBrowserStore, { pin: 'aim:*' })
  *
  * Usage (ESM / bundler):
- *   import SenecaBrowserStore from '@voxgig/seneca-browser-store'
+ *   import SenecaBrowserStore from '@seneca/browser-cache'
  *   seneca.use(SenecaBrowserStore, { pin: 'aim:*' })
  *
  * IMPORTANT: register the plugin AFTER `.client(...)` so the remote pin
@@ -333,7 +333,7 @@
     const pinSpecs = pins.map(parsePin)
 
     // Interception uses the ordu inward/outward pipeline (the same mechanism
-    // seneca-browser itself uses for `debounce`). This runs for every message
+    // @seneca/browser itself uses for `debounce`). This runs for every message
     // regardless of transport, and - unlike `seneca.wrap` - does not depend
     // on the target pin action already existing when the plugin loads (the
     // browser transport client pin is only wired up during transport init).

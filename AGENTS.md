@@ -1,4 +1,4 @@
-# Agent guide: @voxgig/seneca-browser-store
+# Agent guide: @seneca/browser-cache
 
 Browser-side Seneca state cache with optimistic writes and message-based
 reactivity. Concepts: [README.md](README.md) + [docs/](docs/).
@@ -6,7 +6,7 @@ reactivity. Concepts: [README.md](README.md) + [docs/](docs/).
 ## Commands
 
 ```bash
-npm test        # node:test (test/store.test.js)
+npm test        # node:test (test/*.test.js)
 ```
 
 Plain JS, no build step: `browser-store.js` is the source AND the shipped
