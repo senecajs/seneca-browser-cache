@@ -7,7 +7,7 @@ view that reacts to writes made anywhere in the app.*
 
 ```js
 import Seneca from '@seneca/browser'
-import SenecaBrowserStore from '@voxgig/seneca-browser-store'
+import SenecaBrowserStore from '@seneca/browser-cache'
 
 const seneca = Seneca({ legacy: false })
   .client({ type: 'browser', pin: 'aim:*' })   // remote pin first
@@ -26,7 +26,7 @@ await seneca.post('aim:todo,list:item')
 await seneca.post('aim:todo,list:item')
 ```
 
-(If you also load `@voxgig/seneca-browser-debug`, its **Store** tab shows
+(If you also load `@seneca/browser-debug`, its **Store** tab shows
 the state tree filling up, and the Messages tab shows the second read
 never leaving the browser.)
 

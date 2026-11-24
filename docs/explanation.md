@@ -5,7 +5,7 @@
 ## Why interception is an ordu inward/outward pair
 
 The cache is installed as an **ordu inward/outward** hook pair on the
-Seneca message pipeline (the same mechanism seneca-browser uses internally
+Seneca message pipeline (the same mechanism @seneca/browser uses internally
 for `debounce`) — not `seneca.wrap`.
 
 Two reasons. First, `wrap` requires the target action to exist when the

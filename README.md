@@ -1,4 +1,4 @@
-# @voxgig/seneca-browser-store
+# @seneca/browser-cache
 
 A Redux-like **state cache** for [Seneca][] running in the browser. It sits
 transparently in front of the remote (backend) message pins and caches query
@@ -12,14 +12,20 @@ It is a **pass-through** cache: it never changes message semantics. And
 Seneca message (`sys:browser-store,changed:group`) that any component can
 observe with `seneca.sub` — no separate reactive runtime.
 
-Pairs with [`@voxgig/seneca-browser-debug`][browser-debug], whose **Store**
+Pairs with [`@seneca/browser-debug`][browser-debug], whose **Store**
 tab shows the live cache as a tree.
 
 ## Install
 
 ```sh
-npm install @voxgig/seneca-browser-store
+npm install @seneca/browser @seneca/browser-cache
 ```
+
+The plugin runs inside the Seneca 4 that `@seneca/browser` 8 embeds.
+`@seneca/browser` is an optional peer dependency: install it, as above,
+when a bundler imports it, and leave it out when the page loads the
+bundle from a script tag or a vendored copy. The plugin registers as
+`browser-store`, and its messages are `sys:browser-store,*`.
 
 ## Quick start
 
@@ -27,7 +33,7 @@ Register the plugin **after** `.client(...)`:
 
 ```js
 import Seneca from '@seneca/browser'
-import SenecaBrowserStore from '@voxgig/seneca-browser-store'
+import SenecaBrowserStore from '@seneca/browser-cache'
 
 const seneca = Seneca({ legacy: false }).client({ type: 'browser', pin: 'aim:*' })
 seneca.use(SenecaBrowserStore, { pin: 'aim:*' })
@@ -53,4 +59,4 @@ Working on this repo with an AI agent? See [AGENTS.md](AGENTS.md).
 MIT
 
 [Seneca]: https://senecajs.org
-[browser-debug]: https://github.com/voxgig/seneca-browser-debug
+[browser-debug]: https://github.com/senecajs/seneca-browser-debug
